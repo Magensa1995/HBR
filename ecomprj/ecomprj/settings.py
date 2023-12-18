@@ -147,5 +147,4 @@ JAZZMIN_SETTINGS = {
     # 'site_copyright': "HBR-Store Welcome to you"
 }
 
-
 AUTH_USER_MODEL = "userauths.User"
