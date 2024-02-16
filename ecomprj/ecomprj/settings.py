@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 
     # Third party
     'taggit',
+    'ckeditor',
 
 ]
 
@@ -147,5 +148,7 @@ JAZZMIN_SETTINGS = {
     # 'site_logo': "static/img/logo.jpeg",
     # 'site_copyright': "HBR-Store Welcome to you"
 }
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
 AUTH_USER_MODEL = "userauths.User"
