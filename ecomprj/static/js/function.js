@@ -21,12 +21,12 @@ $("#commentForm").submit(function(e){
                 $(".add-review").hide()
                 
                 // Lấy đối tượng div có class là "edu-comment"
-                let eduCommentDiv = document.querySelector('.edu-comment');
+                let eduCommentDiv = document.createElement('.edu-comment');
                 
                 // Thiết lập nội dung HTML cho div
                 let _html = '<div class="edu-comment">'
-                    _html +='<div class="thumbnail">'
-                    _html +='<img class="rounded-circle shadow-1-strong mb-4" src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp" alt="avatar" style="width: 150px;" />'
+                    _html +='<div class="d-flex flex-start">'
+                    _html +='<img class="rounded-circle shadow-1-strong mb-4" src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp" alt="avatar" style="max-width: 50px;" />'
                     _html +='</div>'
                     _html +='<div class="comment-content">'
                     _html +='<div class="comment-top">'
@@ -39,8 +39,8 @@ $("#commentForm").submit(function(e){
 
                     _html +='</div>'
                     _html +='</div>'
-                    _html +='<span class="subtitle">'+ res.context.datetime_created +'</span>'
-                    _html +='<p>'+ res.context.review +'</p>'
+                    _html +='<p class="mb-0">'+ res.context.datetime_created +'</p>'
+                    _html +='<p class="mb-0">'+ res.context.review +'</p>'
                     _html +='</div>'
                     _html +='</div>'
 
@@ -54,6 +54,7 @@ $("#commentForm").submit(function(e){
                 // Chọn phần tử với class "container" và thêm newDiv vào đó
                 let container_comment = document.querySelector('.container-comment');
                 container_comment.appendChild(eduCommentDiv);
+
             }
         },
     })

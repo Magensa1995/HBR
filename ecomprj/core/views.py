@@ -143,6 +143,8 @@ def ajax_add_review(request, pid):
         rating=request.POST["rating"]
     )
 
+    single_review.save()
+
     context = {
         'user': user.username,
         'datetime_created': single_review.datetime_created,
