@@ -69,4 +69,31 @@ function updateDateTime() {
 
     // Display the date and time in the specified HTML element
     document.getElementsByClassName("subtitle").innerText = dateTimeString;
-  }
+}
+
+
+$(".add-to-cart-btn").on("click", function(){
+    let quantity = $("#pro-qty").val()
+    let pro_title = $(".product_title").val()
+    let pro_id = $(".product-id").val()
+    let pro_price = $(".current-product-price").text()
+
+    let this_val = $(this)
+
+    console.log("Quantity", quantity)
+    console.log("ID", pro_id)
+    console.log("Title", pro_title)
+    console.log("Price", pro_price)
+    console.log("This is", this_val)
+
+    $.ajax({
+        url:'/add-to-cart',
+        data:{
+            'id':pro_id,
+            'qty':quantity,
+            'title':pro_title,
+            'price':pro_price
+
+        }
+    })
+})

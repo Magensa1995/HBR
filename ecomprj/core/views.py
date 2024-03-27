@@ -1,7 +1,7 @@
 
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render, redirect
-from core.models import Category, Vendor, Product, ProductImages, CartOrder, CartOrderItem, ProductReview, Wishlist, Address
+from core.models import Category, Vendor, Product, ProductImages, CartOrder, CartOrderDetail, ProductReview, Wishlist, Address
 from django.db.models import Avg
 from taggit.models import Tag
 from core.forms import ProductReviewForm
@@ -162,3 +162,16 @@ def ajax_add_review(request, pid):
             'average_reviews': average_reviews,
         }
     )
+
+# # Order Item
+# def add_to_cart(request, product_id):
+#     product = Product.objects.get(pid=product_id)
+#     order, created = CartOrder.objects.get_or_create(total_price=0)  # Create an order if not exist
+#     order_item, created = CartOrderItem.objects.get_or_create(order=order, product=product)
+#     order_item.quantity += 1
+#     order_item.price = product.price
+#     order_item.total = product.price * order_item.quantity
+#     order_item.save()
+#     order.total_price += product.price
+#     order.save()
+#     return redirect('product_list')

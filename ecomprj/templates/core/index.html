@@ -105,7 +105,7 @@
                     </div>
                     <div class="featured__item__text">
                         <h4><a style="color: black;" href="{% url 'core:product-detail' p.pid %}">{{p.title}}</a></h4>
-                        <h5>${{p.price}}</h5>
+                        <h5 class="current-product-price">${{p.price}}</h5>
                         <h6 style="text-decoration-line: line-through;">${{p.old_price}}</h6>
                     </div>
                 </div>

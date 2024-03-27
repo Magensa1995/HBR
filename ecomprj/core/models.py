@@ -152,7 +152,7 @@ class ProductImages(models.Model):
 
 class CartOrder(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    price = models.DecimalField(
+    total_price = models.DecimalField(
         max_digits=9999999999, decimal_places=2, default="1.99")
     paid_status = models.BooleanField(default=False)
     order_date = models.DateTimeField(auto_now_add=True)
@@ -163,10 +163,9 @@ class CartOrder(models.Model):
         verbose_name_plural = "Cart Order"
 
 
-class CartOrderItem(models.Model):
+class CartOrderDetail(models.Model):
     order = models.ForeignKey(CartOrder, on_delete=models.CASCADE)
     invoice_no = models.CharField(max_length=200)
-    product_status = models.CharField(max_length=200)
     item = models.CharField(max_length=200)
     image = models.CharField(max_length=200)
     qty = models.IntegerField(default=0)
@@ -176,10 +175,13 @@ class CartOrderItem(models.Model):
         max_digits=9999999999, decimal_places=2, default="1.99")
 
     class Meta:
-        verbose_name_plural = "Cart Order Items"
+        verbose_name_plural = "Cart Order Details"
 
     def order_img(self):
         return mark_safe('<img src="/media/%s" width="50" height="50" />' % (self.image))
+    
+    
+
 
 ########################## Product Review, Wishlists, Address #############################
 
@@ -218,3 +220,4 @@ class Address(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     address = models.CharField(max_length=100, null=True)
     status = models.BooleanField(default=False)
+
